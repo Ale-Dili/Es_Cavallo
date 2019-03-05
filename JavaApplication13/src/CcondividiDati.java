@@ -56,11 +56,14 @@ public class CcondividiDati {
      * Metodo che inizializza le variabili c1,c2,c3,c4,c5 a 0.
      */
     
+    private boolean continua;
+    
     private Semaphore semClop1;
     private Semaphore semClop2;
     private Semaphore semClop3;
     private Semaphore semClop4;
     private Semaphore semClop5;
+    private Semaphore semCh;
     
     public CcondividiDati() {
         this.c1 = 0;
@@ -73,7 +76,17 @@ public class CcondividiDati {
         semClop3 = new Semaphore(0);
         semClop4 = new Semaphore(0);
         semClop5 = new Semaphore(0);
+        semCh = new Semaphore(1);
+        continua = true;
         
+    }
+
+    public void setContinua(boolean continua) {
+        this.continua = continua;
+    }
+
+    public boolean getContinua() {
+        return continua;
     }
     
     
@@ -115,6 +128,14 @@ public class CcondividiDati {
     
     public void SignalClop5() {
         semClop5.release();
+    }
+    
+    public void WaitCh() throws InterruptedException {
+        semCh.acquire();
+    }
+    
+    public void SignalCh() {
+        semCh.release();
     }
     /**
      * @author Christian Sipione

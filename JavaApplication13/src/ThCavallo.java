@@ -78,7 +78,7 @@ public class ThCavallo extends Thread {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < 51; i++) {
+            while(ptr.getContinua()) {
                 if (Thread.currentThread().isInterrupted()) {
                     break;
                 }
@@ -87,7 +87,7 @@ public class ThCavallo extends Thread {
                     Thread.sleep(100);
                 }
                 if (usaYield) {
-                    Thread.yield();
+                    //Thread.yield();
                 }
                 if (pos == 1) {
                     sem1.Wait();
