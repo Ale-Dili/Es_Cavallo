@@ -42,6 +42,17 @@ public class ClopCavalli {
             th5.start();
             th6.start();
 
+            
+            
+            c.WaitCorsaFinita();
+            
+            th.interrupt();
+            th2.interrupt();
+            th3.interrupt();
+            th4.interrupt();
+            th5.interrupt();
+            th6.interrupt();
+            
             c.WaitClop1();
             c.WaitClop2();
             c.WaitClop3();
@@ -52,8 +63,9 @@ public class ClopCavalli {
             //th3.join();
             //th4.join();
             //th5.join();
-            th6.interrupt();
+            
 
+            System.out.println("Il vincitore è il: "+c.getVincitore()+" cavallo");
             System.out.println("Programma terminato.");
         } catch (InterruptedException ex) {
             Logger.getLogger(ClopCavalli.class.getName()).log(Level.SEVERE, null, ex);

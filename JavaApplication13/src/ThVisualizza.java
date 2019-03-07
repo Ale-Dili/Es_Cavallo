@@ -1,5 +1,8 @@
 
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * @author Christian Sipione
  *
@@ -38,16 +41,24 @@ public class ThVisualizza extends Thread {
      * Metodo che manda in output il suono di un cavallo.
      */
     public void run() {
-        while (true) {
-            if (Thread.currentThread().isInterrupted()) {
-                break;
+        try {
+            while (true) {
+
+                if (Thread.currentThread().isInterrupted()) {
+                    break;
+                }
+                ptr.WaitVisualizza1();
+
+                System.out.println(ptr.getC1());
+                System.out.println(ptr.getC2());
+                System.out.println(ptr.getC3());
+                System.out.println(ptr.getC4());
+                System.out.println(ptr.getC5());
+
+                ptr.SignalVisualizza2();
             }
-            System.out.println(ptr.getC1());
-            System.out.println(ptr.getC2());
-            System.out.println(ptr.getC3());
-            System.out.println(ptr.getC4());
-            System.out.println(ptr.getC5());
+        } catch (InterruptedException ex) {
+           
         }
     }
-
 }

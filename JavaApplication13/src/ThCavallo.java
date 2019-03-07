@@ -78,61 +78,74 @@ public class ThCavallo extends Thread {
     @Override
     public void run() {
         try {
-            while(ptr.getContinua()) {
+            for (int i = 0; i < 50; i++) {
                 if (Thread.currentThread().isInterrupted()) {
                     break;
                 }
-                System.out.println("Clop" + pos);
-                if (usaSleep) {
-                    Thread.sleep(100);
-                }
-                if (usaYield) {
-                    //Thread.yield();
-                }
+                
+                //if (usaSleep) {
+                  //  Thread.sleep(100);
+                //}
+                //if (usaYield) {
+                  //  Thread.yield();
+                //}
+
+                ptr.WaitVisualizza2();
                 if (pos == 1) {
+                    System.out.println("Clop" + pos);
                     sem1.Wait();
                     ptr.setC1();
                     sem1.Signal();
                 }
                 if (pos == 2) {
+                    System.out.println("Clop" + pos);
                     sem1.Wait();
                     ptr.setC2();
                     sem1.Signal();
                 }
                 if (pos == 3) {
+                    System.out.println("Clop" + pos);
                     sem1.Wait();
                     ptr.setC3();
                     sem1.Signal();
                 }
                 if (pos == 4) {
+                    System.out.println("Clop" + pos);
                     sem1.Wait();
                     ptr.setC4();
                     sem1.Signal();
                 }
                 if (pos == 5) {
+                    System.out.println("Clop" + pos);
                     sem1.Wait();
                     ptr.setC5();
                     sem1.Signal();
                 }
+
+                ptr.SignalVisualizza1();
             }
 
-            if (pos == 1) {
-                ptr.SignalClop1();
-            }
-            if (pos == 2) {
-                ptr.SignalClop2();
-            }
-            if (pos == 3) {
-                ptr.SignalClop3();
-            }
-            if (pos == 4) {
-                ptr.SignalClop4();
-            }
-            if (pos == 5) {
-                ptr.SignalClop5();
-            }
+            ptr.SignalCorsaFinita();
+            ptr.setVincitore(pos);
+
         } catch (Exception e) {
 
+        }
+
+        if (pos == 1) {
+            ptr.SignalClop1();
+        }
+        if (pos == 2) {
+            ptr.SignalClop2();
+        }
+        if (pos == 3) {
+            ptr.SignalClop3();
+        }
+        if (pos == 4) {
+            ptr.SignalClop4();
+        }
+        if (pos == 5) {
+            ptr.SignalClop5();
         }
     }
 }

@@ -20,20 +20,24 @@ main -> ThCavallo_4 ++ : start
 main -> ThCavallo_5 ++ : start
 main -> ThVisualizza ++ : start
 
+main -> DatiCondivisi : c.WaitCorsaFinita
+
 Note over main : Join ThCavallo_1
-ThCavallo_1 -> main -- : return
+ThCavallo_1 -> main -- : interrupt
 Note over main : Join ThCavallo_2
-ThCavallo_2  -> main -- : return
+ThCavallo_2  -> main -- : interrupt
 Note over main : Join ThCavallo_3
-ThCavallo_3  -> main -- : return
+ThCavallo_3  -> main -- : interrupt
 Note over main : Join ThCavallo_4
-ThCavallo_4  -> main -- : return
+ThCavallo_4  -> main -- : interrupt
 Note over main : Join ThCavallo_5
-ThCavallo_5  -> main -- : return
+ThCavallo_5  -> main -- : interrupt
 
 ThVisualizza -> main -- : Interrupt
 
-main -> Utente -- : Programma terminato
+main -> Utente : Visualizzazione del cavallo vincitore
+
+main -> Utente -- : Programam terminato
 
 
 @enduml
